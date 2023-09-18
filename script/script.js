@@ -11,6 +11,14 @@ equacao2Grau = (a,b,c) =>{
     return "x1 = " + div(soma(-b,raiz(delta)),mult(2,a)) + 
            " x2 = " + div(sub(-b,raiz(delta)),mult(2,a));
 }
+let a = 0;
+let b = 0;
+let resultado = 0;
+let executar = "";
 
+calcular = () =>{
+    if(executar)
+    if(executar = "soma") soma(a,b);
+}
 // Tentando... 3x2 - 2x -1
 // escrever(equacao2Grau(-2,1,2));
