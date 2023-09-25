@@ -3,6 +3,7 @@ let b = "";
 let valor = "";
 let executar = "";
 let temPonto = false;
+let desligada = true;
 soma = (a,b) => Number(a) + Number(b);
 sub = (a,b) => Number(a) - Number(b);
 mult = (a,b) => Number(a) * Number(b);
@@ -21,10 +22,12 @@ function mostrar_resultado(){
 function calcular(){
     if(executar != ""){
         b = valor;
-        if(executar = "soma") valor = soma(a,b);
-        if(executar = "sub") valor = sub(a,b);
-        if(executar = "div") valor = div(a,b);
-        if(executar = "mult") valor = mult(a,b);
+        if(executar == "soma") valor = soma(a,b);
+        if(executar == "sub") valor = sub(a,b);
+        if(executar == "div") valor = div(a,b);
+        if(executar == "mult") valor = mult(a,b);
+        if(executar == 'porc') valor = 0;
+        if(executar == "raiz") valor = raiz(a);
         mostrar_resultado();
         executar = "";
         a = "";
@@ -32,6 +35,23 @@ function calcular(){
         valor = "";
         temPonto = false;
     }
+}
+function desliga(){
+    if(desligada){
+        zerar();
+    }else{
+        zerar();
+        mostrar_resultado();
+    }
+    desligada = !desligada;
+}
+function zerar(){
+    a = "";
+    b = "";
+    valor = "0";
+    executar = "";
+    mostrar_resultado();
+    valor = "";
 }
 function operacao(op){
     executar = op;
