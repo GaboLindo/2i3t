@@ -30,12 +30,9 @@ function calcular(){
     }
 }
 function digitando(tecla){
-   if(executar == ""){
-       a += tecla;
-       alert(a);
-   }else{
-       b += tecla;
+   valor = valor + tecla;
+   mostrar_resultado();
    } 
    
 
-}
+
