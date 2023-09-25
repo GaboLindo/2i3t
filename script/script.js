@@ -20,6 +20,7 @@ function mostrar_resultado(){
 }
 function calcular(){
     if(executar != ""){
+        b = valor;
         if(executar = "soma") mostrar_resultado(soma(a,b));
         if(executar = "sub") mostrar_resultado(sub(a,b));
         if(executar = "div") mostrar_resultado(div(a,b));
@@ -29,7 +30,25 @@ function calcular(){
         b = "";
     }
 }
+function operacao(op){
+    executar = op;
+    a = valor
+    valor + "";
+
+}
 function digitando(tecla){
+if(!tecla == "."){
+    if(!temPonto) {
+        valor = valor + tecla;
+        mostrar_resultado();
+        temPonto = true
+    }
+    return;
+    mostrar_resultado();
+    temPonto = true
+
+}
+
    valor = valor + tecla;
    mostrar_resultado();
    } 
