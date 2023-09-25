@@ -3,10 +3,10 @@ let b = "";
 let valor = "";
 let executar = "";
 let temPonto = false;
-soma = (a,b) => a + b;
-sub = (a,b) => a - b;
-mult = (a,b) => a * b;
-div = (a,b) => a / b;
+soma = (a,b) => Number(a) + Number(b);
+sub = (a,b) => Number(a) - Number(b);
+mult = (a,b) => Number(a) * Number(b);
+div = (a,b) => Number(a) / Number(b);
 raiz = a => Math.sqrt(a);
 equacao2Grau = (a,b,c) =>{
     let delta = sub(mult(b,b),mult(4,mult(a,c)));
