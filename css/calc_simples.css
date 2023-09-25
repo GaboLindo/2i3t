@@ -15,6 +15,7 @@ body {
 #resultado {
     background-color: green;
     color: greenyellow;
+    text-align: right;
 }
 .btn {
     text-align: center;
