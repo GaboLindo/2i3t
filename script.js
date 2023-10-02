@@ -13,6 +13,53 @@ equacao2grau =(a,b,c) =>{
    
      }
      escrever(equacao2grau(3,2,1))
+    ]function desliga_calculadora(){
+
+
+
+
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+      desliga = !desliga;
+
+      if(desliga){
+        zerar();
+      }
+      else{
+        zerar();
+        mostrar_resultado();
+        valor="";
+      }
+      }
+      function porcentenagem () {  
+        if (executar ="mult"){
+
+         b=valor;
+         valor = div (mult(a,b),100);
+        }
+        
+      }
+
+
+
+
+
+
+
+
+
+
+
+    }
 
     
 
