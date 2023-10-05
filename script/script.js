@@ -3,7 +3,7 @@ let b = "";
 let valor = "";
 let executar = "";
 let temPonto = false;
-let desligada = true;
+let desligada = false;
 soma = (a,b) => Number(a) + Number(b);
 sub = (a,b) => Number(a) - Number(b);
 mult = (a,b) => Number(a) * Number(b);
@@ -16,10 +16,12 @@ equacao2Grau = (a,b,c) =>{
     return "x1 = " + div(soma(-b,raiz(delta)),mult(2,a)) + 
            " x2 = " + div(sub(-b,raiz(delta)),mult(2,a));
 }
+
 function mostrar_resultado(){
     document.getElementById("resultado").value = valor;
 }
 function calcular(){
+    if(desligada) return;
     if(executar != ""){
         b = valor;
         if(executar == "soma") valor = soma(a,b);
@@ -37,28 +39,48 @@ function calcular(){
     }
 }
 function desliga(){
+    desligada = !desligada;
+    console.log(desligada);
     if(desligada){
         zerar();
     }else{
         zerar();
         mostrar_resultado();
     }
-    desligada = !desligada;
+  return desligada;
+}
+desliga();
+function calcula_raiz(){
+    if(valor == ""){
+        valor = 0;
+    }
+    valor = raiz(valor);
+    mostrar_resultado();
+}
+function porcentagem(){
+   if(executar == "mult"){
+       b = valor;
+       valor = div(mult(a,b),100);
+       mostrar_resultado();
+   }
 }
 function zerar(){
+    if(desligada) return;
     a = "";
     b = "";
     valor = "0";
-    executar = "";
     mostrar_resultado();
+    executar = "";
     valor = "";
 }
 function operacao(op){
+    if(desligada) return;
     executar = op;
     a = valor;
     valor = "";
 }
 function digitando(tecla){
+    if(desligada) return;
    if (tecla == "."){
        if(!temPonto) {
          valor = valor + tecla;
