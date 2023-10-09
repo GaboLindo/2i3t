@@ -1,76 +1,98 @@
-escrever = msg=> alert(msg);
-soma = (a,b) => a + b;
-sub= (a,b) => a - b;
-mult = (a,b) => a * b;
+let a = "";
+let b = "";
+let valor = "";
+let executar = "";
+let temPonto = false;
+let desligada = false;
+soma = (a,b) => Number(a) + Number(b);
+sub = (a,b) => Number(a) - Number(b);
+mult = (a,b) => Number(a) * Number(b);
+div = (a,b) => Number(a) / Number(b);
 raiz = a => Math.sqrt(a);
-equacao2grau =(a,b,c) =>{
+equacao2Grau = (a,b,c) =>{
+    let delta = sub(mult(b,b),mult(4,mult(a,c)));
+    if (delta < 0) return "Não possui raiz Real.";
+    if (delta == 0) return "x1 = x2 = " + div(-b,mult(2,a));
+    return "x1 = " + div(soma(-b,raiz(delta)),mult(2,a)) + 
+           " x2 = " + div(sub(-b,raiz(delta)),mult(2,a));
+}
 
-   let delta = sub(mult(b,b),mult(4,mult(a,c)));
-   if(delta< 0 ) return "nao possui raiz real.";
-   if(delta == 0 ) return "X1 = X2 =." + div(-b,mult(2,a));
-   return "X1 = " + div (soma (-b,raiz(delta)),mult(2,a)) + " X2 ="
-     + div (sub (-b,raiz(delta)),mult(2,a))
-   
-     }
-     escrever(equacao2grau(3,2,1))
-    ]function desliga_calculadora(){
-
-
-
-
-
-
-     
-     
-     
-     
-     
-     
-     
-     
-     
-      desliga = !desliga;
-
-      if(desliga){
+function mostrar_resultado(){
+    document.getElementById("resultado").value = valor;
+}
+function raiz_quadrada(){
+    valor = raiz(valor);
+    mostrar_resultado();
+}
+function calcular(){
+    if(desligada) return;
+    if(executar != ""){
+        b = valor;
+        if(executar == "soma") valor = soma(a,b);
+        if(executar == "sub") valor = sub(a,b);
+        if(executar == "div") valor = div(a,b);
+        if(executar == "mult") valor = mult(a,b);
+        if(executar == 'porc') valor = 0;
+        if(executar == "raiz") valor = raiz(a);
+        mostrar_resultado();
+        executar = "";
+        a = "";
+        b = "";
+        valor = "";
+        temPonto = false;
+    }
+}
+function desliga(){
+    desligada = !desligada;
+    console.log(desligada);
+    if(desligada){
         zerar();
-      }
-      else{
+    }else{
         zerar();
         mostrar_resultado();
-        valor="";
-      }
-      }
-      function porcentenagem () {  
-        if (executar ="mult"){
-
-         b=valor;
-         valor = div (mult(a,b),100);
-        }
-        
-      }
-
-
-
-
-
-
-
-
-
-
-
     }
-
-    
-
-
-
-
-
-
-
-
-
-
-
+  return desligada;
+}
+desliga();
+function calcula_raiz(){
+    if(valor == ""){
+        valor = 0;
+    }
+    valor = raiz(valor);
+    mostrar_resultado();
+}
+function porcentagem(){
+   if(executar == "mult"){
+       b = valor;
+       valor = div(mult(a,b),100);
+       mostrar_resultado();
+   }
+}
+function zerar(){
+    if(desligada) return;
+    a = "";
+    b = "";
+    valor = "0";
+    mostrar_resultado();
+    executar = "";
+    valor = "";
+}
+function operacao(op){
+    if(desligada) return;
+    executar = op;
+    a = valor;
+    valor = "";
+}
+function digitando(tecla){
+    if(desligada) return;
+   if (tecla == "."){
+       if(!temPonto) {
+         valor = valor + tecla;
+         mostrar_resultado();
+         temPonto = true;
+       }
+       return;
+   }
+   valor = valor + tecla;
+   mostrar_resultado();
 }
