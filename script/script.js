@@ -1,5 +1,10 @@
 let a = "";
 let b = "";
+let c = "";
+let sa = "+";
+let sb = "+";
+let sc = "+";
+
 let valor = "";
 let executar = "";
 let temPonto = false;
@@ -11,6 +16,7 @@ div = (a,b) => Number(a) / Number(b);
 raiz = a => Math.sqrt(a);
 equacao2Grau = (a,b,c) =>{
     let delta = sub(mult(b,b),mult(4,mult(a,c)));
+    document.getElementById("delta").innerHTML = delta;
     if (delta < 0) return "Não possui raiz Real.";
     if (delta == 0) return "x1 = x2 = " + div(-b,mult(2,a));
     return "x1 = " + div(soma(-b,raiz(delta)),mult(2,a)) + 
@@ -20,6 +26,11 @@ equacao2Grau = (a,b,c) =>{
 function mostrar_resultado(){
     document.getElementById("resultado").value = valor;
 }
+function raiz_quadrada(){
+    valor = raiz(valor);
+    mostrar_resultado();
+    valor = "";
+}
 function calcular(){
     if(desligada) return;
     if(executar != ""){
@@ -28,8 +39,6 @@ function calcular(){
         if(executar == "sub") valor = sub(a,b);
         if(executar == "div") valor = div(a,b);
         if(executar == "mult") valor = mult(a,b);
-        if(executar == 'porc') valor = 0;
-        if(executar == "raiz") valor = raiz(a);
         mostrar_resultado();
         executar = "";
         a = "";
@@ -39,29 +48,22 @@ function calcular(){
     }
 }
 function desliga(){
-    desligada = !desligada;
-    console.log(desligada);
     if(desligada){
+        desligada = false;
         zerar();
     }else{
         zerar();
         mostrar_resultado();
+        desligada = true;
     }
-  return desligada;
 }
-desliga();
-function calcula_raiz(){
-    if(valor == ""){
-        valor = 0;
-    }
-    valor = raiz(valor);
-    mostrar_resultado();
-}
+
 function porcentagem(){
    if(executar == "mult"){
        b = valor;
        valor = div(mult(a,b),100);
        mostrar_resultado();
+       valor = "";
    }
 }
 function zerar(){
@@ -91,4 +93,33 @@ function digitando(tecla){
    }
    valor = valor + tecla;
    mostrar_resultado();
+}
+const calcular_equaçao = () =. {
+    if (a != ""&& a != "0")
+        { 
+      
+       if(a != "+") {a = -(Number(a));} else  { a=Number(a)};
+       if(a != "+") {b = -(Number(b));}  else {  b=Number(b)};
+       if(a != "+") {c = -(Number(c));} else{  c=Number(c)};
+       document.getElementById("raiz").innerHTML = equacao2Grau(a,b,c);
+
+    }
+}
+
+const set_sinal_a =() =>{
+
+    sa = document.getElementById("valor_a").value;
+     alert(a);
+
+}
+const set_sinal_b =() =>{
+
+    sb = document.getElementById("valor_b").value;
+     calcular_equaçao
+}
+
+const set_sinal_c =() =>{
+
+    sc = document.getElementById("valor_c").value;
+     calcular_equaçao
 }
